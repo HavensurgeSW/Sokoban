@@ -2,6 +2,8 @@
 #define MAINFRAME_H
 
 #include "raylib.h"
+#include "Tile.h"
+#include "Level.h"
 #include <iostream>
 using namespace std;
 

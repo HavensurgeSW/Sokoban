@@ -112,8 +112,11 @@ namespace SB {
 		}
 	}
 	void Mainframe::gameScreen() {
-
+		initTile();
+		lvlOne();
+		lvlTwo();
 		while (!WindowShouldClose() && screenId == screenID::game&&_mainBool) {
+
 
 			if (!_pause) {
 				input();
@@ -133,13 +136,13 @@ namespace SB {
 	void Mainframe::draw() {
 		BeginDrawing();
 		ClearBackground(BLACK);
-		for (int i = 0; i < 9; i++){
-			for (int j = 0; j < 18; j++){
-				DrawRectangle(40+40*j,25+40*i,40,40, RED);
-				DrawRectangleLines(40 + 40 * j, 25 + 40 * i, 40, 40, BLACK);
+		drawTiles();
+		
+		/*for (int i = 0; i < maxTLY; i++) {
+			for (int j = 0; j < maxTLX; j++) {
+				DrawRectangleRec(tile[i][j].rec, RED);
 			}
-
-		}
+		}*/
 		EndDrawing();
 	}
 	void Mainframe::input() {
