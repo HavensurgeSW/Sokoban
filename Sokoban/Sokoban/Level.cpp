@@ -1,5 +1,5 @@
 #include "Level.h"
-#include "Tile.h"
+
 
 namespace SB {
 	//-----------
@@ -74,6 +74,9 @@ namespace SB {
 		tile[6][10].id =4 ;
 		tile[6][11].id =4 ;
 		tile[6][12].id =4 ;
+
+		player.rec.x = tile[3][5].rec.x;
+		player.rec.y = tile[3][5].rec.y;
 
 		assignTex();
 

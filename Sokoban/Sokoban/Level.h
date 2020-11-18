@@ -1,5 +1,7 @@
 #ifndef LEVEL_H
 #define LEVEL_H
+#include "Tile.h"
+#include "Player.h"
 namespace SB{
 
 	//-----------

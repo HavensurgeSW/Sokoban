@@ -113,8 +113,9 @@ namespace SB {
 	}
 	void Mainframe::gameScreen() {
 		initTile();
+		initPlayer();
 		lvlOne();
-		lvlTwo();
+		//lvlTwo();
 		while (!WindowShouldClose() && screenId == screenID::game&&_mainBool) {
 
 
@@ -137,6 +138,7 @@ namespace SB {
 		BeginDrawing();
 		ClearBackground(BLACK);
 		drawTiles();
+		drawPlayer();
 		
 		/*for (int i = 0; i < maxTLY; i++) {
 			for (int j = 0; j < maxTLX; j++) {

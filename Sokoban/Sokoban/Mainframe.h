@@ -4,6 +4,7 @@
 #include "raylib.h"
 #include "Tile.h"
 #include "Level.h"
+#include "Player.h"
 #include <iostream>
 using namespace std;
 
