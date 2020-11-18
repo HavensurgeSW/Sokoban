@@ -11,6 +11,7 @@ namespace SB {
 	// 3- Right 
 	// 4- Up
 	// 5- Center
+	// 6- Walkable
 	//-----------
 
 	struct Tile {

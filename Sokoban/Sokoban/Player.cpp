@@ -11,8 +11,15 @@ namespace SB {
 		player.rec.y = 0;
 		player.tex = LoadTexture("../res/CloakGuy.png");
 	}
-
 	void drawPlayer() {
 		DrawTexture(player.tex, player.rec.x, player.rec.y,RAYWHITE);
+	}
+
+	void move(){
+		if (IsKeyPressed(KEY_D)||IsKeyPressed(KEY_RIGHT)){
+			if (tile[][]){
+
+			}
+		}
 	}
 }
