@@ -3,13 +3,15 @@
 
 namespace SB {
 	Player player;
-
+	
 	void initPlayer(){
 		player.rec.height = 40;
 		player.rec.width = 40;
 		player.rec.x = 0;
 		player.rec.y = 0;
 		player.tex = LoadTexture("../res/CloakGuy.png");
+		player.posX = 0;
+		player.posY = 0;
 	}
 	void drawPlayer() {
 		DrawTexture(player.tex, player.rec.x, player.rec.y,RAYWHITE);
@@ -17,8 +19,51 @@ namespace SB {
 
 	void move(){
 		if (IsKeyPressed(KEY_D)||IsKeyPressed(KEY_RIGHT)){
-			if (tile[][]){
-
+#if DEBUG
+			cout << "Enter Key D" << endl;
+			cout << player.posX << endl;
+			cout << player.posY << endl;
+#endif
+			if (tile[player.posX][player.posY+1].id==6){
+				player.rec.x = tile[player.posX][player.posY+1].rec.x;
+				player.rec.y = tile[player.posX][player.posY+1].rec.y;
+				player.posY++;
+			}
+		}
+		if (IsKeyPressed(KEY_A) || IsKeyPressed(KEY_LEFT)) {
+#if DEBUG
+			cout << "Enter Key A" << endl;
+			cout << player.posX << endl;
+			cout << player.posY << endl;
+#endif
+			if (tile[player.posX][player.posY - 1].id == 6) {
+				player.rec.x = tile[player.posX][player.posY - 1].rec.x;
+				player.rec.y = tile[player.posX][player.posY - 1].rec.y;
+				player.posY--;
+			}
+		}
+		if (IsKeyPressed(KEY_W) || IsKeyPressed(KEY_UP)) {
+#if DEBUG
+			cout << "Enter Key W" << endl;
+			cout << player.posX << endl;
+			cout << player.posY << endl;
+#endif
+			if (tile[player.posX-1][player.posY].id == 6) {
+				player.rec.x = tile[player.posX-1][player.posY].rec.x;
+				player.rec.y = tile[player.posX-1][player.posY].rec.y;
+				player.posX--;
+			}
+		}
+		if (IsKeyPressed(KEY_S) || IsKeyPressed(KEY_DOWN)) {
+#if DEBUG
+			cout << "Enter Key S" << endl;
+			cout << player.posX << endl;
+			cout << player.posY << endl;
+#endif
+			if (tile[player.posX+1][player.posY].id == 6) {
+				player.rec.x = tile[player.posX+1][player.posY].rec.x;
+				player.rec.y = tile[player.posX+1][player.posY].rec.y;
+				player.posX++;
 			}
 		}
 	}

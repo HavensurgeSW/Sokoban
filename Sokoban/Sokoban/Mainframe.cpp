@@ -115,7 +115,7 @@ namespace SB {
 		initTile();
 		initPlayer();
 		lvlOne();
-		//lvlTwo();
+		lvlTwo();
 		while (!WindowShouldClose() && screenId == screenID::game&&_mainBool) {
 
 
@@ -132,7 +132,7 @@ namespace SB {
 
 	}
 	void Mainframe::update() {
-
+		move();
 	}
 	void Mainframe::draw() {
 		BeginDrawing();
