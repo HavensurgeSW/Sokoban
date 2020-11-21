@@ -15,6 +15,8 @@ namespace SB {
 	extern Texture2D blockTex;
 
 	extern Block block[6];
+	void initBlocks();
+	void drawBlocks();
 
 }
 #endif

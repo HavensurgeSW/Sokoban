@@ -9,6 +9,10 @@ namespace SB {
 	// 3- Right 
 	// 4- Up
 	// 5- Center
+	// 6- Walkable
+
+	//Checklist:
+	// CLEAN->ASSIGN BORDERS->ASSIGN WALKABLES->SET BLOCKS->SET WINCON->SET PLAYER SPAWN->ASSIGN TEXTURES
 	//-----------
 
 	void assignTex(){
@@ -92,13 +96,17 @@ namespace SB {
 		tile[5][11].id = 6;
 		tile[5][12].id = 6;
 
+		block[0].active = true;
+		block[0].posX = 3;
+		block[0].posY = 10;
+		block[0].rec.x = tile[3][10].rec.x;
+		block[0].rec.y = tile[3][10].rec.y;
+
 
 		player.posX = 3;
 		player.posY = 5;
 		player.rec.x = tile[3][5].rec.x;
 		player.rec.y = tile[3][5].rec.y;
-
-		
 
 		assignTex();
 

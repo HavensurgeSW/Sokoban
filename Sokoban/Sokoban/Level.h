@@ -2,6 +2,7 @@
 #define LEVEL_H
 #include "Tile.h"
 #include "Player.h"
+#include "Block.h"
 namespace SB{
 
 	//-----------

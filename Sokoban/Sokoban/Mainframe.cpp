@@ -114,8 +114,9 @@ namespace SB {
 	void Mainframe::gameScreen() {
 		initTile();
 		initPlayer();
+		initBlocks();
 		lvlOne();
-		lvlTwo();
+		//lvlTwo();
 		while (!WindowShouldClose() && screenId == screenID::game&&_mainBool) {
 
 
@@ -132,15 +133,7 @@ namespace SB {
 
 	}
 	void Mainframe::update() {
-		movePlayer();
 
-		for (int i = 0; i < maxTLY; i++) {
-			for (int j = 0; j < maxTLX; j++) {
-				if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec(GetMousePosition(), tile[i][j].rec)) {
-					cout << i << endl << j << endl << "-----" << endl;
-				}
-			}
-		}
 
 	}
 	void Mainframe::draw() {
@@ -148,7 +141,7 @@ namespace SB {
 		ClearBackground(BLACK);
 		drawTiles();
 		drawPlayer();
-		
+		drawBlocks();
 		/*for (int i = 0; i < maxTLY; i++) {
 			for (int j = 0; j < maxTLX; j++) {
 				DrawRectangleRec(tile[i][j].rec, RED);
@@ -157,7 +150,17 @@ namespace SB {
 		EndDrawing();
 	}
 	void Mainframe::input() {
-		
+		movePlayer();
+#if DEBUG
+		//Util: Tile Coord finder
+		for (int i = 0; i < maxTLY; i++) {
+			for (int j = 0; j < maxTLX; j++) {
+				if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec(GetMousePosition(), tile[i][j].rec)) {
+					cout << i << endl << j << endl << "-----" << endl;
+				}
+			}
+		}
+#endif
 	}
 	void Mainframe::collisions() {
 	}

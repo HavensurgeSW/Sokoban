@@ -5,6 +5,7 @@
 #include "Tile.h"
 #include "Level.h"
 #include "Player.h"
+#include "Block.h"
 #include <iostream>
 using namespace std;
 

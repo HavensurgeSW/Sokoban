@@ -25,8 +25,15 @@ namespace SB {
 			cout << player.posY << endl;
 #endif
 			if (tile[player.posX][player.posY+1].id==6){
-				player.rec.x = tile[player.posX][player.posY+1].rec.x;
-				player.rec.y = tile[player.posX][player.posY+1].rec.y;
+				for (int i = 0; i < 6; i++){
+					if (block[i].posY==player.posY+1&&block[i].posX==player.posX&& tile[player.posX][player.posY + 2].id == 6){
+						block[i].rec.x = tile[player.posX][player.posY + 2].rec.x;
+						block[i].rec.y = tile[player.posX][player.posY + 2].rec.y;
+						block[i].posY++;
+					}
+				}
+				player.rec.x = tile[player.posX][player.posY + 1].rec.x;
+				player.rec.y = tile[player.posX][player.posY + 1].rec.y;
 				player.posY++;
 			}
 		}
@@ -37,6 +44,14 @@ namespace SB {
 			cout << player.posY << endl;
 #endif
 			if (tile[player.posX][player.posY - 1].id == 6) {
+
+				for (int i = 0; i < 6; i++) {
+					if (block[i].posY == player.posY - 1 &&block[i].posX == player.posX&& tile[player.posX][player.posY - 2].id == 6) {
+						block[i].rec.x = tile[player.posX][player.posY-2].rec.x;
+						block[i].rec.y = tile[player.posX][player.posY-2].rec.y;
+						block[i].posY--;
+					}
+				}
 				player.rec.x = tile[player.posX][player.posY - 1].rec.x;
 				player.rec.y = tile[player.posX][player.posY - 1].rec.y;
 				player.posY--;
@@ -49,6 +64,14 @@ namespace SB {
 			cout << player.posY << endl;
 #endif
 			if (tile[player.posX-1][player.posY].id == 6) {
+
+				for (int i = 0; i < 6; i++) {
+					if (block[i].posX == player.posX - 1 && block[i].posY == player.posY && tile[player.posX-2][player.posY].id == 6) {
+						block[i].rec.x = tile[player.posX-2][player.posY].rec.x;
+						block[i].rec.y = tile[player.posX-2][player.posY].rec.y;
+						block[i].posX--;
+					}
+				}
 				player.rec.x = tile[player.posX-1][player.posY].rec.x;
 				player.rec.y = tile[player.posX-1][player.posY].rec.y;
 				player.posX--;
@@ -61,6 +84,14 @@ namespace SB {
 			cout << player.posY << endl;
 #endif
 			if (tile[player.posX+1][player.posY].id == 6) {
+
+				for (int i = 0; i < 6; i++) {
+					if (block[i].posX == player.posX + 1 && block[i].posY == player.posY && tile[player.posX + 2][player.posY].id == 6) {
+						block[i].rec.x = tile[player.posX + 2][player.posY].rec.x;
+						block[i].rec.y = tile[player.posX + 2][player.posY].rec.y;
+						block[i].posX++;
+					}
+				}
 				player.rec.x = tile[player.posX+1][player.posY].rec.x;
 				player.rec.y = tile[player.posX+1][player.posY].rec.y;
 				player.posX++;

@@ -2,6 +2,7 @@
 #define PLAYER_H
 #include "raylib.h"
 #include "Tile.h"
+#include "Block.h"
 #include <iostream>
 using namespace std;
 
