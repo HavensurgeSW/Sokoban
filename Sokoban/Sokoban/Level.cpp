@@ -135,6 +135,34 @@ namespace SB {
 		tile[8][8].id = 4;
 		tile[8][9].id = 5;
 
+		tile[2][7].id = 6;
+		tile[2][8].id = 6;
+		tile[3][7].id = 6;
+		tile[3][8].id = 6;
+		tile[4][7].id = 6;
+		tile[4][8].id = 6;
+		tile[5][7].id = 6;
+		tile[5][8].id = 6;
+		tile[6][3].id = 6;
+		tile[6][4].id = 6;
+		tile[6][5].id = 6;
+		tile[6][6].id = 6;
+		tile[6][7].id = 6;
+		tile[6][8].id = 6;
+		tile[7][3].id = 6;
+		tile[7][4].id = 6;
+		tile[7][5].id = 6;
+		tile[7][6].id = 6;
+		tile[7][7].id = 6;
+		tile[7][8].id = 6;
+
+
+
+		player.posX = 3;
+		player.posY = 7;
+		player.rec.x = tile[3][7].rec.x;
+		player.rec.y = tile[3][7].rec.y;
+
 		assignTex();
 	}
 	

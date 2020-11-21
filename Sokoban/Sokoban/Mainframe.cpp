@@ -132,7 +132,16 @@ namespace SB {
 
 	}
 	void Mainframe::update() {
-		move();
+		movePlayer();
+
+		for (int i = 0; i < maxTLY; i++) {
+			for (int j = 0; j < maxTLX; j++) {
+				if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec(GetMousePosition(), tile[i][j].rec)) {
+					cout << i << endl << j << endl << "-----" << endl;
+				}
+			}
+		}
+
 	}
 	void Mainframe::draw() {
 		BeginDrawing();

@@ -18,7 +18,7 @@ namespace SB {
 	
 	void initPlayer();
 	void drawPlayer();
-	void move();
+	void movePlayer();
 
 }
 

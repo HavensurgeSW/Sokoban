@@ -17,7 +17,7 @@ namespace SB {
 		DrawTexture(player.tex, player.rec.x, player.rec.y,RAYWHITE);
 	}
 
-	void move(){
+	void movePlayer(){
 		if (IsKeyPressed(KEY_D)||IsKeyPressed(KEY_RIGHT)){
 #if DEBUG
 			cout << "Enter Key D" << endl;
