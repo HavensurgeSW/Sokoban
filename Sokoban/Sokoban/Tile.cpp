@@ -16,6 +16,7 @@ namespace SB {
 	Texture2D up;
 	Texture2D center;
 	Texture2D blank;
+	Texture2D objective;
 
 	void loadTileTextures() {
 		left = LoadTexture("../res/Left.png");
@@ -24,6 +25,8 @@ namespace SB {
 		up = LoadTexture("../res/Up.png");
 		center = LoadTexture("../res/Center.png");
 		blank = LoadTexture("../res/Blank.png");
+		objective = LoadTexture("../res/WinSlot.png");
+
 	}
 
 	void initTile() {

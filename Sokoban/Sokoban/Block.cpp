@@ -12,11 +12,11 @@ namespace SB {
 		for (int i = 0; i < 6; i++){
 			block[i].rec.height = 40;
 			block[i].rec.width = 40;
-			block[i].rec.x = 0;
-			block[i].rec.y = 0;
+			block[i].rec.x = -40;
+			block[i].rec.y = -40;
 			block[i].tex = blockTex;
-			block[i].posX = 0;
-			block[i].posY = 0;
+			block[i].posX = -1;
+			block[i].posY = -1;
 			block[i].active = false;
 		}
 	}

@@ -12,6 +12,7 @@ namespace SB {
 	// 4- Up
 	// 5- Center
 	// 6- Walkable
+	// 7- Objective
 	//-----------
 
 	struct Tile {
@@ -26,6 +27,7 @@ namespace SB {
 	extern Texture2D up;
 	extern Texture2D center;
 	extern Texture2D blank;
+	extern Texture2D objective;
 
 
 	const int maxTLX = 18;

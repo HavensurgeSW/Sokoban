@@ -10,6 +10,7 @@ namespace SB {
 	// 4- Up
 	// 5- Center
 	// 6- Walkable
+	// 7- Objective
 
 	//Checklist:
 	// CLEAN->ASSIGN BORDERS->ASSIGN WALKABLES->SET BLOCKS->SET WINCON->SET PLAYER SPAWN->ASSIGN TEXTURES
@@ -37,7 +38,11 @@ namespace SB {
 				case 5:
 					tile[i][j].tex = center;
 					break;
-				default:
+				case 6:
+					tile[i][j].tex = blank;
+					break;
+				case 7:
+					tile[i][j].tex = objective;
 					break;
 				}
 			}
@@ -78,6 +83,8 @@ namespace SB {
 		tile[6][10].id =4 ;
 		tile[6][11].id =4 ;
 		tile[6][12].id =4 ;
+
+		tile[2][12].id = 7;
 
 		tile[2][12].id = 6;
 		tile[3][5].id = 6;
