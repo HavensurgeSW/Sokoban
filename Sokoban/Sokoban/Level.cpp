@@ -456,7 +456,7 @@ namespace SB {
 		tile[5][7].winSlot = true;
 		tile[5][8].winSlot = true;
 
-		block[0].active = true;
+		{block[0].active = true;
 		block[0].posX = 3;
 		block[0].posY = 6;
 		block[0].rec.x = tile[3][6].rec.x;
@@ -485,6 +485,7 @@ namespace SB {
 		block[4].posY = 5;
 		block[4].rec.x = tile[5][5].rec.x;
 		block[4].rec.y = tile[5][5].rec.y;
+		}
 
 
 		player.posX = 4;
@@ -494,6 +495,27 @@ namespace SB {
 		assignTex();
 	}
 	int lvlFiveWincon(int &level) {
-		return 1;
+		int win = 0;
+
+		if (tile[5][6].rec.x == block[0].rec.x&&tile[5][6].rec.y == block[0].rec.y) {
+			win++;
+		}
+		if (tile[5][7].rec.x == block[1].rec.x&&tile[5][7].rec.y == block[1].rec.y) {
+			win++;
+		}
+		if (tile[4][7].rec.x == block[2].rec.x&&tile[4][7].rec.y == block[2].rec.y) {
+			win++;
+		}
+		if (tile[4][8].rec.x == block[3].rec.x&&tile[4][8].rec.y == block[3].rec.y) {
+			win++;
+		}
+		if (tile[5][8].rec.x == block[4].rec.x&&tile[5][8].rec.y == block[4].rec.y) {
+			win++;
+		}
+
+		if (win == 5) {
+			level++;
+			return level;
+		}
 	}
 }

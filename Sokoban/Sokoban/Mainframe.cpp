@@ -144,10 +144,10 @@ namespace SB {
 		case 4:
 			lvlFour();
 			break;
+		case 5:
+			lvlFive();
+			break;
 		}
-
-		lvlFour();
-		_level = 4;
 
 		while (!WindowShouldClose() && screenId == screenID::game&&_mainBool) {
 
@@ -178,6 +178,11 @@ namespace SB {
 		case 4:
 			lvlFourWincon(_level);
 			break;
+		case 5:
+			lvlFiveWincon(_level);
+			if (_level==6){
+				setScene(0);
+			}
 		}
 
 	}
@@ -225,6 +230,13 @@ namespace SB {
 				break;
 			case 3:
 				lvlThree();
+				break;
+			case 4:
+				lvlFour();
+				break;
+			case 5:
+				lvlFive();
+				break;
 			}
 
 		
