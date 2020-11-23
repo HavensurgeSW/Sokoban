@@ -129,11 +129,11 @@ namespace SB {
 		assignTex();
 
 	}
-	int lvlOneWincon(int level) {
+	int lvlOneWincon(int &level) {
 		for (int i = 0; i < maxTLY; i++) {
 			for (int j = 0; j < maxTLX; j++) {
 				
-				if (tile[2][12].winSlot&&tile[2][12].rec.x == block[0].rec.x&&tile[2][12].rec.y == block[0].rec.y) {
+				if (tile[2][12].rec.x == block[0].rec.x&&tile[2][12].rec.y == block[0].rec.y) {
 					cout << "Win!" << endl;
 					level++;
 					lvlTwo();
@@ -183,9 +183,9 @@ namespace SB {
 
 		block[0].active = true;
 		block[0].posX = 4;
-		block[0].posY = 8;
-		block[0].rec.x = tile[4][8].rec.x;
-		block[0].rec.y = tile[4][8].rec.y;
+		block[0].posY = 7;
+		block[0].rec.x = tile[4][7].rec.x;
+		block[0].rec.y = tile[4][7].rec.y;
 
 
 		player.posX = 4;
@@ -195,7 +195,7 @@ namespace SB {
 		assignTex();
 		
 	}
-	int lvlTwoWincon(int level){
+	int lvlTwoWincon(int &level){
 
 		for (int i = 0; i < maxTLY; i++) {
 			for (int j = 0; j < maxTLX; j++) {
@@ -292,13 +292,14 @@ namespace SB {
 
 		assignTex();
 	}
-	int lvlThreeWincon(int level) {
+	int lvlThreeWincon(int &level) {
 		for (int i = 0; i < maxTLY; i++) {
 			for (int j = 0; j < maxTLX; j++) {
 				for (int k = 0; k < 2; k++){
 					if (tile[1][11].rec.x == block[k].rec.x&&tile[1][11].rec.y == block[k].rec.y&&tile[1][11].winSlot&&
 						tile[2][11].rec.x == block[k].rec.x&&tile[2][11].rec.y == block[k].rec.y&&tile[2][11].winSlot){
-						level++;
+
+						level = 1;
 						lvlOne();
 						return level;
 					}

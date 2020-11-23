@@ -15,13 +15,13 @@ namespace SB{
 	//-----------
 
 	void lvlOne();
-	int lvlOneWincon(int level);
+	int lvlOneWincon(int &level);
 
 	void lvlTwo();
-	int lvlTwoWincon(int level);
+	int lvlTwoWincon(int &level);
 
 	void lvlThree();
-	int lvlThreeWincon(int level);
+	int lvlThreeWincon(int &level);
 
 	void lvlFour();
 }

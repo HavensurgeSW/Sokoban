@@ -129,9 +129,6 @@ namespace SB {
 			break;
 		}
 
-	
-
-
 		while (!WindowShouldClose() && screenId == screenID::game&&_mainBool) {
 
 
@@ -193,6 +190,8 @@ namespace SB {
 			case 2:
 				lvlTwo();
 				break;
+			case 3:
+				lvlThree();
 			}
 
 		}
