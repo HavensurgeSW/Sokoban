@@ -15,8 +15,8 @@ namespace SB {
 			block[i].rec.x = -40;
 			block[i].rec.y = -40;
 			block[i].tex = blockTex;
-			block[i].posX = -1;
-			block[i].posY = -1;
+			block[i].posX = -1*i+1;
+			block[i].posY = -1*i+1;
 			block[i].active = false;
 		}
 	}

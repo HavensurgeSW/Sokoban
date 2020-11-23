@@ -132,8 +132,8 @@ namespace SB {
 	int lvlOneWincon(int level) {
 		for (int i = 0; i < maxTLY; i++) {
 			for (int j = 0; j < maxTLX; j++) {
-
-				if (tile[2][12].winSlot&&tile[2][12].rec.x == block[i].rec.x&&tile[2][12].rec.y == block[i].rec.y) {
+				
+				if (tile[2][12].winSlot&&tile[2][12].rec.x == block[0].rec.x&&tile[2][12].rec.y == block[0].rec.y) {
 					cout << "Win!" << endl;
 					level++;
 					lvlTwo();
@@ -199,7 +199,7 @@ namespace SB {
 
 		for (int i = 0; i < maxTLY; i++) {
 			for (int j = 0; j < maxTLX; j++) {
-				if (tile[4][10].rec.x == block[i].rec.x&&tile[4][10].rec.y == block[i].rec.y&&tile[4][10].winSlot){
+				if (tile[4][10].rec.x == block[0].rec.x&&tile[4][10].rec.y == block[0].rec.y){
 					cout << "Win!" << endl;
 					level++;
 					lvlThree();

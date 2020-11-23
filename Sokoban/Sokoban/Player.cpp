@@ -19,6 +19,7 @@ namespace SB {
 
 	void movePlayer() {
 		bool canMove = true;
+		//cout << player.posX << endl << player.posY << endl;
 		if (IsKeyPressed(KEY_D) || IsKeyPressed(KEY_RIGHT)) {
 #if DEBUG
 			cout << "Enter Key D" << endl;
@@ -26,14 +27,14 @@ namespace SB {
 			cout << player.posY << endl;
 
 #endif
-			for (int i = 0; i < 6; i++) {
+			for (int i = 0; i < 3; i++) {
 				if (block[i].posY == player.posY + 1 && block[i].posX == player.posX&& tile[player.posX][player.posY + 2].id == 6&&block[i].active) {
 					block[i].rec.x = tile[player.posX][player.posY + 2].rec.x;
 					block[i].rec.y = tile[player.posX][player.posY + 2].rec.y;
 					block[i].posY++;
 					
 				}
-				for (int j = 0; j < 6; j++) {
+				for (int j = 0; j < 3; j++) {
 					if (block[i].posX == block[j].posX&&block[i].posY == block[j].posY&&i != j) {
 						block[i].rec.x = tile[player.posX][player.posY + 1].rec.x;
 						block[i].rec.y = tile[player.posX][player.posY + 1].rec.y;
@@ -43,8 +44,7 @@ namespace SB {
 				}
 
 
-				if ((player.posY + 1 == block[i].posY&&player.posX == block[i].posX && tile[player.posX][player.posY + 2].id != 6) && canMove&&block[i].active
-					|| canMove&&tile[player.posX][player.posY + 1].id != 6) {
+				if ((player.posY + 1 == block[i].posY&&player.posX == block[i].posX && tile[player.posX][player.posY + 2].id != 6) &&canMove&&block[i].active|| canMove&&tile[player.posX][player.posY + 1].id != 6) {
 					canMove = false;
 				}
 			}
