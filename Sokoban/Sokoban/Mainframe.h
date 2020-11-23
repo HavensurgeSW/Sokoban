@@ -28,6 +28,7 @@ namespace SB {
 			options
 		};
 		screenID screenId;
+		Texture2D menubg;
 		Music bgMusic;
 		Mainframe();
 		~Mainframe();

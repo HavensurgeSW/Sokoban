@@ -23,6 +23,7 @@ namespace SB {
 		SetExitKey(KEY_VOLUME_UP);
 		InitAudioDevice();
 		bgMusic = LoadMusicStream("../res/Wind.mp3");
+		menubg = LoadTexture("../res/background.png");
 		initTile();
 		initPlayer();
 		initBlocks();
@@ -89,6 +90,8 @@ namespace SB {
 
 			BeginDrawing();
 			ClearBackground(BLACK);
+
+			DrawTexture(menubg,0,0,RAYWHITE);
 
 			DrawText(FormatText("SOKOBAN"), 20, 10, 120, WHITE);
 
