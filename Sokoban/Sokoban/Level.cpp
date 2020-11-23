@@ -41,9 +41,9 @@ namespace SB {
 				case 6:
 					tile[i][j].tex = blank;
 					break;
-				case 7:
+				}
+				if (tile[i][j].winSlot){
 					tile[i][j].tex = objective;
-					break;
 				}
 			}
 		}
@@ -84,8 +84,6 @@ namespace SB {
 		tile[6][11].id =4 ;
 		tile[6][12].id =4 ;
 
-		tile[2][12].id = 7;
-
 		tile[2][12].id = 6;
 		tile[3][5].id = 6;
 		tile[3][6].id = 6;
@@ -103,11 +101,15 @@ namespace SB {
 		tile[5][11].id = 6;
 		tile[5][12].id = 6;
 
+		tile[2][12].id = 6;
+		tile[2][12].winSlot = true;
+		
+
 		block[0].active = true;
 		block[0].posX = 3;
-		block[0].posY = 10;
-		block[0].rec.x = tile[3][10].rec.x;
-		block[0].rec.y = tile[3][10].rec.y;
+		block[0].posY = 9;
+		block[0].rec.x = tile[3][9].rec.x;
+		block[0].rec.y = tile[3][9].rec.y;
 
 
 		player.posX = 3;
@@ -117,6 +119,11 @@ namespace SB {
 
 		assignTex();
 
+	}
+	void lvlOneWincon() {
+		if (tile[2][12].winSlot&&tile[2][12].rec.x == block[0].rec.x&&tile[2][12].rec.y == block[0].rec.y) {
+			lvlTwo();
+		}
 	}
 	void lvlTwo() {
 		cleanPrevLvl();
@@ -179,6 +186,9 @@ namespace SB {
 		player.rec.y = tile[3][7].rec.y;
 
 		assignTex();
+	}
+	void lvlTwoWincon(){
+	
 	}
 	
 }

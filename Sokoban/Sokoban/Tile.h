@@ -12,13 +12,13 @@ namespace SB {
 	// 4- Up
 	// 5- Center
 	// 6- Walkable
-	// 7- Objective
 	//-----------
 
 	struct Tile {
 		Texture2D tex;
 		Rectangle rec;
 		int id;
+		bool winSlot;
 	};
 
 	extern Texture2D left;

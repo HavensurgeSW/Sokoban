@@ -10,6 +10,7 @@ namespace SB {
 		setScene(0);
 		SetTargetFPS(60);
 
+
 	}
 
 	Mainframe::~Mainframe() {
@@ -21,6 +22,9 @@ namespace SB {
 		SetTargetFPS(60);
 		setScene(0);
 		SetExitKey(KEY_VOLUME_UP);
+		initTile();
+		initPlayer();
+		initBlocks();
 	}
 	void Mainframe::deInit() {
 		CloseWindow();
@@ -96,7 +100,7 @@ namespace SB {
 				DrawText(FormatText("Close"), 20, (GetScreenHeight() / 2) + 150, 30, WHITE);
 
 
-			DrawText(FormatText("v 0.1"), GetScreenWidth() - 50, 1, 20, WHITE);
+			DrawText(FormatText("v 0.8"), GetScreenWidth() - 50, 1, 20, WHITE);
 			if (CheckCollisionPointRec(GetMousePosition(), creditsButton)) {
 				DrawText(FormatText("Engine: Raylib 3.0"), (GetScreenWidth() / 2 + 40), (GetScreenHeight() / 3) + 20, 30, WHITE);
 				DrawText(FormatText("Created by:"), (GetScreenWidth() / 2 + 40), (GetScreenHeight() / 3) + 100, 30, WHITE);
@@ -108,15 +112,21 @@ namespace SB {
 			}
 			if (CheckCollisionPointRec(GetMousePosition(), playButton) && IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
 				setScene(1);
+				_level = 1;
 			}
 		}
 	}
 	void Mainframe::gameScreen() {
-		initTile();
-		initPlayer();
-		initBlocks();
-		lvlOne();
-		//lvlTwo();
+		
+		switch (_level) {
+		case 1:
+			lvlOne();
+			break;
+		case 2:
+			lvlTwo();
+			break;			
+		}
+
 		while (!WindowShouldClose() && screenId == screenID::game&&_mainBool) {
 
 
@@ -133,8 +143,16 @@ namespace SB {
 
 	}
 	void Mainframe::update() {
-
-
+		switch (_level) {
+		case 1: {
+			_level++;
+			lvlOneWincon();
+		}
+			break;
+		case 2:
+			lvlTwoWincon();
+			break;
+		}
 	}
 	void Mainframe::draw() {
 		BeginDrawing();
@@ -156,10 +174,22 @@ namespace SB {
 		for (int i = 0; i < maxTLY; i++) {
 			for (int j = 0; j < maxTLX; j++) {
 				if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec(GetMousePosition(), tile[i][j].rec)) {
-					cout << i << endl << j << endl << "-----" << endl;
+					cout << "X:" <<i << endl <<"Y:"<< j << endl <<"ID:"<<tile[i][j].id <<endl <<"-----" << endl;
 				}
 			}
 		}
+		if (IsKeyPressed(KEY_R)){
+			switch (_level) {
+			case 1:
+				lvlOne();
+				break;
+			case 2:
+				lvlTwo();
+				break;
+			}
+
+		}
+
 #endif
 	}
 	void Mainframe::collisions() {

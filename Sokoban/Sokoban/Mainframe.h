@@ -17,6 +17,7 @@ namespace SB {
 		int _winHeight;
 		bool _pause;
 		bool _mainBool;
+		int _level;
 
 	public:
 

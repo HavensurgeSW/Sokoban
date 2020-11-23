@@ -26,7 +26,6 @@ namespace SB {
 		center = LoadTexture("../res/Center.png");
 		blank = LoadTexture("../res/Blank.png");
 		objective = LoadTexture("../res/WinSlot.png");
-
 	}
 
 	void initTile() {
@@ -36,6 +35,7 @@ namespace SB {
 				tile[i][j].rec.width = 40;
 				tile[i][j].rec.x = 40 + 40 * j;
 				tile[i][j].rec.y = 25 + 40 * i;
+				tile[i][j].winSlot = false;
 			}
 		}
 

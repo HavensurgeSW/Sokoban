@@ -15,6 +15,8 @@ namespace SB{
 	//-----------
 
 	void lvlOne();
+	void lvlOneWincon();
 	void lvlTwo();
+	void lvlTwoWincon();
 }
 #endif
