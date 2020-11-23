@@ -9,8 +9,7 @@ namespace SB {
 		screenID screenId;
 		setScene(0);
 		SetTargetFPS(60);
-
-
+		_level = 0;
 	}
 
 	Mainframe::~Mainframe() {
@@ -124,8 +123,13 @@ namespace SB {
 			break;
 		case 2:
 			lvlTwo();
-			break;			
+			break;	
+		case 3:
+			lvlThree();
+			break;
 		}
+
+		
 
 		while (!WindowShouldClose() && screenId == screenID::game&&_mainBool) {
 
@@ -144,15 +148,15 @@ namespace SB {
 	}
 	void Mainframe::update() {
 		switch (_level) {
-		case 1: {
-			_level++;
-			lvlOneWincon();
-		}
+		case 1:
+			lvlOneWincon(_level);
 			break;
 		case 2:
-			lvlTwoWincon();
+			lvlTwoWincon(_level);
 			break;
 		}
+
+		//cout << block[1].active << endl;
 	}
 	void Mainframe::draw() {
 		BeginDrawing();
