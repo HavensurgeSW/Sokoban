@@ -129,6 +129,9 @@ namespace SB {
 			break;
 		}
 
+		_level = 3;
+		lvlThree();
+
 		
 
 		while (!WindowShouldClose() && screenId == screenID::game&&_mainBool) {
@@ -154,6 +157,8 @@ namespace SB {
 		case 2:
 			lvlTwoWincon(_level);
 			break;
+		case 3:
+			lvlThreeWincon(_level);
 		}
 
 		//cout << block[1].active << endl;

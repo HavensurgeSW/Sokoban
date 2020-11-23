@@ -21,5 +21,8 @@ namespace SB{
 	int lvlTwoWincon(int level);
 
 	void lvlThree();
+	int lvlThreeWincon(int level);
+
+	void lvlFour();
 }
 #endif

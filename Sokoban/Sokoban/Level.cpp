@@ -56,6 +56,8 @@ namespace SB {
 				tile[i][j].winSlot = false;
 			}
 		}
+
+			initBlocks();
 	}
 
 	void lvlOne(){
@@ -197,7 +199,7 @@ namespace SB {
 
 		for (int i = 0; i < maxTLY; i++) {
 			for (int j = 0; j < maxTLX; j++) {
-				if (tile[4][10].rec.x = block[i].rec.x&&tile[4][10].rec.y == block[i].rec.y&&tile[4][10].winSlot){
+				if (tile[4][10].rec.x == block[i].rec.x&&tile[4][10].rec.y == block[i].rec.y&&tile[4][10].winSlot){
 					cout << "Win!" << endl;
 					level++;
 					lvlThree();
@@ -208,7 +210,106 @@ namespace SB {
 		}
 	}
 
-	void lvlThree() {
+	void lvlThree(){
+		cleanPrevLvl();
+		tile[0][10].id = 2;
+		tile[0][11].id = 2;
+		tile[0][12].id = 2;
+		tile[1][7] .id=  5;
+		tile[1][8] .id= 2;
+		tile[1][9] .id=  5;
+		tile[1][13].id = 1;
+		tile[2][7] .id=  3;
+		tile[2][13].id = 1;
+		tile[3][5] .id=  2;
+		tile[3][6] .id=  2;
+		tile[3][7] .id=  5;
+		tile[3][10].id = 5;
+		tile[3][13].id = 1;
+		tile[4][4] .id=  3;
+		tile[4][11].id = 5;
+		tile[4][12].id = 4;
+		tile[5][5] .id=  4;
+		tile[5][6] .id=  5;
+		tile[5][7] .id=  5;
+		tile[5][11].id = 1;
+		tile[6][6] .id=  3;
+		tile[6][11].id = 1;
+		tile[7][6] .id=  3;
+		tile[7][10].id = 5;
+		tile[8][7] .id=  4;
+		tile[8][8] .id=  4;
+		tile[8][9] .id=  4;
+
+		tile[1][10].id = 6;
+		tile[1][11].id = 6;
+		tile[1][12].id = 6;
+		tile[2][8].id = 6;
+		tile[2][9].id = 6;
+		tile[2][10].id = 6;
+		tile[2][11].id = 6;
+		tile[2][12].id = 6;
+		tile[3][8].id = 6;
+		tile[3][9].id = 6;
+		tile[3][11].id = 6;
+		tile[3][12].id = 6;
+		tile[4][5].id = 6;
+		tile[4][6].id = 6;
+		tile[4][7].id = 6;
+		tile[4][8].id = 6;
+		tile[4][9].id = 6;
+		tile[4][10].id = 6;
+		tile[5][8].id = 6;
+		tile[5][9].id = 6;
+		tile[5][10].id = 6;
+		tile[6][7].id = 6;
+		tile[6][8].id = 6;
+		tile[6][9].id = 6;
+		tile[6][10].id = 6;
+		tile[7][7].id = 6;
+		tile[7][8].id = 6;
+		tile[7][9].id = 6;
+			   		 
+		tile[1][12].winSlot = true;
+		tile[2][12].winSlot = true;
+
+		block[0].active = true;
+		block[0].posX = 5;
+		block[0].posY = 9;
+		block[0].rec.x = tile[5][9].rec.x;
+		block[0].rec.y = tile[5][9].rec.y;
+
+		block[1].active = true;
+		block[1].posX = 6;
+		block[1].posY = 9;
+		block[1].rec.x = tile[6][9].rec.x;
+		block[1].rec.y = tile[6][9].rec.y;
+
+		player.posX = 4;
+		player.posY = 5;
+		player.rec.x = tile[4][5].rec.x;
+		player.rec.y = tile[4][5].rec.y;
+
+		assignTex();
+	}
+	int lvlThreeWincon(int level) {
+		for (int i = 0; i < maxTLY; i++) {
+			for (int j = 0; j < maxTLX; j++) {
+				for (int k = 0; k < 2; k++){
+					if (tile[1][11].rec.x == block[k].rec.x&&tile[1][11].rec.y == block[k].rec.y&&tile[1][11].winSlot&&
+						tile[2][11].rec.x == block[k].rec.x&&tile[2][11].rec.y == block[k].rec.y&&tile[2][11].winSlot){
+						level++;
+						lvlOne();
+						return level;
+					}
+
+				}
+
+			}
+		}
+	}
+
+	void lvlFour() {
 		cleanPrevLvl();
 
 		tile[1][6].id = 5;
