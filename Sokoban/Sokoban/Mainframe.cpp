@@ -21,12 +21,15 @@ namespace SB {
 		SetTargetFPS(60);
 		setScene(0);
 		SetExitKey(KEY_VOLUME_UP);
+		InitAudioDevice();
+		bgMusic = LoadMusicStream("../res/Wind.mp3");
 		initTile();
 		initPlayer();
 		initBlocks();
 		initUI();
 	}
 	void Mainframe::deInit() {
+		CloseAudioDevice();
 		CloseWindow();
 	}
 	void Mainframe::setScene(int scene) {
@@ -76,8 +79,14 @@ namespace SB {
 		closeButton.width = 81.25f;
 
 
+		PlayMusicStream(bgMusic);
+		SetMusicVolume(bgMusic, 0.2f);
+
 
 		while (!WindowShouldClose() && screenId == screenID::menu&&_mainBool) {
+
+			UpdateMusicStream(bgMusic);
+
 			BeginDrawing();
 			ClearBackground(BLACK);
 
@@ -113,6 +122,7 @@ namespace SB {
 			if (CheckCollisionPointRec(GetMousePosition(), playButton) && IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
 				setScene(1);
 				_level = 1;
+
 			}
 		}
 	}
@@ -138,7 +148,7 @@ namespace SB {
 
 		while (!WindowShouldClose() && screenId == screenID::game&&_mainBool) {
 
-
+			UpdateMusicStream(bgMusic);
 			if (!_pause) {
 				input();
 				update();

@@ -25,9 +25,10 @@ namespace SB {
 		enum class screenID {
 			menu,
 			game,
-			options,
+			options
 		};
 		screenID screenId;
+		Music bgMusic;
 		Mainframe();
 		~Mainframe();
 		void init();
