@@ -12,7 +12,6 @@ namespace SB {
 	}
 
 	void drawUI() {
-		//DrawRectangleRec(restartButton, BLUE);
 		DrawRectangle(restartButton.x-2,restartButton.y-2, restartButton.width, restartButton.height,BLUE);
 		DrawRectangleLines(restartButton.x - 2, restartButton.y - 2, restartButton.width, restartButton.height, WHITE);
 		if (CheckCollisionPointRec(GetMousePosition(), restartButton))
