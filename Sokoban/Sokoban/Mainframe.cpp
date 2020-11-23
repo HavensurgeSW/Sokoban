@@ -146,6 +146,9 @@ namespace SB {
 			break;
 		}
 
+		lvlFour();
+		_level = 4;
+
 		while (!WindowShouldClose() && screenId == screenID::game&&_mainBool) {
 
 			UpdateMusicStream(bgMusic);

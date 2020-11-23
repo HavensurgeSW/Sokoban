@@ -293,17 +293,16 @@ namespace SB {
 		assignTex();
 	}
 	int lvlThreeWincon(int &level) {
-		int pls = 0;
+		int win = 0;
 		
 		if (tile[1][12].rec.x == block[0].rec.x&&tile[1][12].rec.y == block[0].rec.y|| tile[2][12].rec.x == block[0].rec.x&&tile[2][12].rec.y == block[0].rec.y){
-			pls++;
+			win++;
 		}	
 		if (tile[2][12].rec.x == block[1].rec.x&&tile[2][12].rec.y == block[1].rec.y || tile[1][12].rec.x == block[1].rec.x&&tile[1][12].rec.y == block[1].rec.y) {
-			pls++;
+			win++;
 		}
-		cout << pls << endl;
 		
-		if (pls==2){
+		if (win==2){
 			level++;
 			lvlFour();
 			return level;
@@ -388,7 +387,20 @@ namespace SB {
 		assignTex();
 	}
 	int lvlFourWincon(int &level){
-		return 1;
+		int win = 0;
+
+		if (tile[4][8].rec.x == block[0].rec.x&&tile[4][8].rec.y == block[0].rec.y || tile[7][5].rec.x == block[0].rec.x&&tile[7][5].rec.y == block[0].rec.y) {
+			win++;
+		}
+		if (tile[7][5].rec.x == block[1].rec.x&&tile[7][5].rec.y == block[1].rec.y || tile[4][8].rec.x == block[1].rec.x&&tile[4][8].rec.y == block[1].rec.y) {
+			win++;
+		}
+		
+		if (win == 2) {
+			level++;
+			lvlFive();
+			return level;
+		}
 	}
 	
 
