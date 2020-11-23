@@ -293,20 +293,20 @@ namespace SB {
 		assignTex();
 	}
 	int lvlThreeWincon(int &level) {
-		for (int i = 0; i < maxTLY; i++) {
-			for (int j = 0; j < maxTLX; j++) {
-				for (int k = 0; k < 2; k++){
-					if (tile[1][11].rec.x == block[k].rec.x&&tile[1][11].rec.y == block[k].rec.y&&tile[1][11].winSlot&&
-						tile[2][11].rec.x == block[k].rec.x&&tile[2][11].rec.y == block[k].rec.y&&tile[2][11].winSlot){
-
-						level++;
-						lvlFour();
-						return level;
-					}
-
-				}
-
-			}
+		int pls = 0;
+		
+		if (tile[1][12].rec.x == block[0].rec.x&&tile[1][12].rec.y == block[0].rec.y|| tile[2][12].rec.x == block[0].rec.x&&tile[2][12].rec.y == block[0].rec.y){
+			pls++;
+		}	
+		if (tile[2][12].rec.x == block[1].rec.x&&tile[2][12].rec.y == block[1].rec.y || tile[1][12].rec.x == block[1].rec.x&&tile[1][12].rec.y == block[1].rec.y) {
+			pls++;
+		}
+		cout << pls << endl;
+		
+		if (pls==2){
+			level++;
+			lvlFour();
+			return level;
 		}
 	}
 
@@ -386,6 +386,9 @@ namespace SB {
 		player.rec.y = tile[3][7].rec.y;
 
 		assignTex();
+	}
+	int lvlFourWincon(int &level){
+		return 1;
 	}
 	
 
@@ -477,5 +480,8 @@ namespace SB {
 		player.rec.x = tile[4][4].rec.x;
 		player.rec.y = tile[4][4].rec.y;
 		assignTex();
+	}
+	int lvlFiveWincon(int &level) {
+		return 1;
 	}
 }

@@ -146,9 +146,6 @@ namespace SB {
 			break;
 		}
 
-		lvlFour();
-		lvlFive();
-
 		while (!WindowShouldClose() && screenId == screenID::game&&_mainBool) {
 
 			UpdateMusicStream(bgMusic);
@@ -176,11 +173,10 @@ namespace SB {
 			lvlThreeWincon(_level);
 			break;
 		case 4:
-			//lvlFourWincon(_level);
+			lvlFourWincon(_level);
 			break;
 		}
 
-		//cout << block[1].active << endl;
 	}
 	void Mainframe::draw() {
 		BeginDrawing();
