@@ -6,6 +6,7 @@
 #include "Level.h"
 #include "Player.h"
 #include "Block.h"
+#include "UI.h"
 #include <iostream>
 using namespace std;
 
@@ -42,6 +43,8 @@ namespace SB {
 		void draw();
 		void input();
 		void collisions();
+
+		void resetLevel();
 
 
 	};

@@ -24,6 +24,7 @@ namespace SB {
 		initTile();
 		initPlayer();
 		initBlocks();
+		initUI();
 	}
 	void Mainframe::deInit() {
 		CloseWindow();
@@ -164,6 +165,7 @@ namespace SB {
 		drawTiles();
 		drawPlayer();
 		drawBlocks();
+		drawUI();
 		/*for (int i = 0; i < maxTLY; i++) {
 			for (int j = 0; j < maxTLX; j++) {
 				DrawRectangleRec(tile[i][j].rec, RED);
@@ -173,6 +175,11 @@ namespace SB {
 	}
 	void Mainframe::input() {
 		movePlayer();
+
+		if (CheckCollisionPointRec(GetMousePosition(), restartButton) && IsMouseButtonReleased(MOUSE_LEFT_BUTTON)||IsKeyPressed(KEY_R)) {
+			resetLevel();
+		}
+
 #if DEBUG
 		//Util: Tile Coord finder
 		for (int i = 0; i < maxTLY; i++) {
@@ -182,7 +189,11 @@ namespace SB {
 				}
 			}
 		}
-		if (IsKeyPressed(KEY_R)){
+#endif
+	}
+	void Mainframe::collisions() {
+	}
+	void Mainframe::resetLevel(){
 			switch (_level) {
 			case 1:
 				lvlOne();
@@ -194,10 +205,6 @@ namespace SB {
 				lvlThree();
 			}
 
-		}
-
-#endif
-	}
-	void Mainframe::collisions() {
+		
 	}
 }
