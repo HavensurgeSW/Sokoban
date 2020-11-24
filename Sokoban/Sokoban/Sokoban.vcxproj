@@ -18,6 +18,23 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\Block.cpp" />
+    <ClCompile Include="..\src\Level.cpp" />
+    <ClCompile Include="..\src\Main.cpp" />
+    <ClCompile Include="..\src\Mainframe.cpp" />
+    <ClCompile Include="..\src\Player.cpp" />
+    <ClCompile Include="..\src\Tile.cpp" />
+    <ClCompile Include="..\src\UI.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\Block.h" />
+    <ClInclude Include="..\src\Level.h" />
+    <ClInclude Include="..\src\Mainframe.h" />
+    <ClInclude Include="..\src\Player.h" />
+    <ClInclude Include="..\src\Tile.h" />
+    <ClInclude Include="..\src\UI.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{7E6C5F2B-6F64-4989-937F-D60830EAA806}</ProjectGuid>
@@ -69,7 +86,12 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)bin\$(Configuration)\Game</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)bin\$(Configuration)\Game</OutDir>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -85,6 +107,11 @@
       <AdditionalDependencies>raylib.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
+    <PostBuildEvent>
+      <Command>MKDIR "$(SolutionDir)bin\$(Configuration)\res"
+XCOPY "$(SolutionDir)res" "$(SolutionDir)bin\$(Configuration)\res" /e /h /y /s
+XCOPY "$(SolutionDir)lib\raylib\bin\raylib.dll" "$(TargetDir)" /e /h /y /s</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -115,6 +142,11 @@
       <AdditionalDependencies>raylib.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
+    <PostBuildEvent>
+      <Command>MKDIR "$(SolutionDir)bin\$(Configuration)\res"
+XCOPY "$(SolutionDir)res" "$(SolutionDir)bin\$(Configuration)\res" /e /h /y /s
+XCOPY "$(SolutionDir)lib\raylib\bin\raylib.dll" "$(TargetDir)" /e /h /y /s</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -131,23 +163,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="Block.cpp" />
-    <ClCompile Include="Level.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Mainframe.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Tile.cpp" />
-    <ClCompile Include="UI.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Block.h" />
-    <ClInclude Include="Level.h" />
-    <ClInclude Include="Mainframe.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="Tile.h" />
-    <ClInclude Include="UI.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
