@@ -10,6 +10,7 @@ namespace SB {
 		setScene(0);
 		SetTargetFPS(60);
 		_level = 0;
+		_framecounter = 0;
 	}
 
 	Mainframe::~Mainframe() {
@@ -42,7 +43,7 @@ namespace SB {
 			screenId = screenID::game;
 			break;
 		case 2:
-			screenId = screenID::options;
+			screenId = screenID::pause;
 			break;
 		}
 	}
@@ -55,8 +56,8 @@ namespace SB {
 				menuScreen();
 			case screenID::game:
 				gameScreen();
-			case screenID::options:
-				optionsScreen();
+			case screenID::pause:
+				pauseScreen();
 			}
 		}
 	}
@@ -149,14 +150,17 @@ namespace SB {
 			break;
 		}
 
-		while (!WindowShouldClose() && screenId == screenID::game&&_mainBool) {
+		while (!WindowShouldClose() && screenId == screenID::game||screenId==screenID::pause) {
 
 			UpdateMusicStream(bgMusic);
-			if (!_pause) {
+			if (screenId == screenID::game) {
 				input();
 				update();
 				collisions();
 				draw();
+			}
+			if (screenId == screenID::pause){
+				pauseScreen();
 			}
 		
 		}
@@ -183,6 +187,14 @@ namespace SB {
 			if (_level==6){
 				setScene(0);
 			}
+		}
+
+		if (_framecounter < 6) {
+			_framecounter++;
+		}
+
+		if (_framecounter > 5) {
+			pause();
 		}
 
 	}
@@ -240,5 +252,69 @@ namespace SB {
 			}
 
 		
+	}
+
+	void Mainframe::pauseScreen() {
+		Rectangle resumeButton;
+		resumeButton.x = 20;
+		resumeButton.y = (GetScreenHeight() / 2) + 150.0;
+		resumeButton.height = 30.0f;
+		resumeButton.width = 113.75f;
+		Rectangle menuButton;
+		menuButton.x = 220;
+		menuButton.y = (GetScreenHeight() / 2) + 150.0;
+		menuButton.height = 30.0;
+		menuButton.width = 65.0;
+
+
+		BeginDrawing();
+		ClearBackground(BLACK);
+		DrawTexture(menubg, 0, 0, WHITE);
+
+		if (CheckCollisionPointRec(GetMousePosition(), resumeButton))
+			DrawText(FormatText("Resume"), resumeButton.x, (GetScreenHeight() / 2) + 150.0f, 30, RED);
+		else
+			DrawText(FormatText("Resume"),resumeButton.x, (GetScreenHeight() / 2) + 150.0f, 30, WHITE);
+
+
+
+		if (CheckCollisionPointRec(GetMousePosition(), menuButton))
+			DrawText(FormatText("Menu"), menuButton.x, (GetScreenHeight() / 2) + 150.0f, 30, RED);
+		else
+			DrawText(FormatText("Menu"), menuButton.x, (GetScreenHeight() / 2) + 150.0f, 30, WHITE);
+
+		//DrawRectangleRec(resumeButton,RED);
+		//DrawRectangleRec(menuButton, GREEN);
+
+		EndDrawing();
+
+		if (CheckCollisionPointRec(GetMousePosition(), menuButton) && IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
+			setScene(0);
+		}
+
+
+		if (_framecounter < 6) {
+			_framecounter++;
+		}
+		if (_framecounter > 5) {
+			if (CheckCollisionPointRec(GetMousePosition(), resumeButton) && IsMouseButtonDown(MOUSE_LEFT_BUTTON) || IsKeyPressed(KEY_ESCAPE)) {
+				unpause();
+			}
+		}
+
+#if DEBUG
+
+#endif
+	}
+	void Mainframe::pause() {
+		if(IsKeyPressed(KEY_ESCAPE)) {
+			screenId = screenID::pause;
+			_framecounter = 0;
+
+		}
+	}
+	void Mainframe::unpause() {
+		screenId = screenID::game;
+		_framecounter = 0;
 	}
 }

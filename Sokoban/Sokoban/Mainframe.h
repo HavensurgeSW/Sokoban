@@ -19,13 +19,14 @@ namespace SB {
 		bool _pause;
 		bool _mainBool;
 		int _level;
+		int _framecounter;
 
 	public:
 
 		enum class screenID {
 			menu,
 			game,
-			options
+			pause
 		};
 		screenID screenId;
 		Texture2D menubg;
@@ -47,6 +48,10 @@ namespace SB {
 		void collisions();
 
 		void resetLevel();
+
+		void pauseScreen();
+		void pause();
+		void unpause();
 
 
 	};
