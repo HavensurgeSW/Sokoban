@@ -110,7 +110,7 @@
     <PostBuildEvent>
       <Command>MKDIR "$(SolutionDir)bin\$(Configuration)\res"
 XCOPY "$(SolutionDir)res" "$(SolutionDir)bin\$(Configuration)\res" /e /h /y /s
-XCOPY "$(SolutionDir)lib\raylib\bin\raylib.dll" "$(TargetDir)" /e /h /y /s</Command>
+XCOPY "$(SolutionDir)lib\raylib\binary\raylib.dll" "$(TargetDir)" /e /h /y /s</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -145,7 +145,7 @@ XCOPY "$(SolutionDir)lib\raylib\bin\raylib.dll" "$(TargetDir)" /e /h /y /s</Comm
     <PostBuildEvent>
       <Command>MKDIR "$(SolutionDir)bin\$(Configuration)\res"
 XCOPY "$(SolutionDir)res" "$(SolutionDir)bin\$(Configuration)\res" /e /h /y /s
-XCOPY "$(SolutionDir)lib\raylib\bin\raylib.dll" "$(TargetDir)" /e /h /y /s</Command>
+XCOPY "$(SolutionDir)lib\raylib\binary\raylib.dll" "$(TargetDir)" /e /h /y /s</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
