@@ -12,6 +12,7 @@ namespace SB {
 		Texture2D tex;
 		int posX;
 		int posY;
+		Sound move;
 	};
 
 	extern Player player;

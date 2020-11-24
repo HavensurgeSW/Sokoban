@@ -31,6 +31,7 @@ namespace SB {
 		screenID screenId;
 		Texture2D menubg;
 		Music bgMusic;
+		Music gameMusic;
 		Mainframe();
 		~Mainframe();
 		void init();

@@ -4,6 +4,7 @@
 
 namespace SB {
 	extern Rectangle restartButton;
+	extern Rectangle gamePauseButton;
 
 	void initUI();
 	void drawUI();

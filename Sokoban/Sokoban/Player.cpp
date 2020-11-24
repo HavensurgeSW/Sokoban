@@ -12,6 +12,8 @@ namespace SB {
 		player.tex = LoadTexture("../res/CloakGuy.png");
 		player.posX = 0;
 		player.posY = 0;
+		player.move = LoadSound("../res/move.ogg");
+		SetSoundVolume(player.move, 0.05f);
 	}
 	void drawPlayer() {
 		DrawTexture(player.tex, player.rec.x, player.rec.y, RAYWHITE);
@@ -52,6 +54,7 @@ namespace SB {
 				player.rec.x = tile[player.posX][player.posY + 1].rec.x;
 				player.rec.y = tile[player.posX][player.posY + 1].rec.y;
 				player.posY++;
+				PlaySound(player.move);
 				canMove = false;					
 
 			}
@@ -93,6 +96,7 @@ namespace SB {
 					player.rec.y = tile[player.posX][player.posY - 1].rec.y;
 					player.posY--;
 					canMove = false;
+					PlaySound(player.move);
 			}
 
 		}
@@ -129,6 +133,7 @@ namespace SB {
 				player.rec.x = tile[player.posX - 1][player.posY].rec.x;
 				player.rec.y = tile[player.posX - 1][player.posY].rec.y;
 				player.posX--;
+				PlaySound(player.move);
 				canMove = false;
 				}
 
@@ -167,6 +172,8 @@ namespace SB {
 					player.rec.x = tile[player.posX + 1][player.posY].rec.x;
 					player.rec.y = tile[player.posX + 1][player.posY].rec.y;
 					player.posX++;
+					PlaySound(player.move);
+					canMove = false;
 				}
 
 			}

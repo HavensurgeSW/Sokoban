@@ -24,6 +24,7 @@ namespace SB {
 		SetExitKey(KEY_VOLUME_UP);
 		InitAudioDevice();
 		bgMusic = LoadMusicStream("../res/Wind.mp3");
+		gameMusic = LoadMusicStream("../res/Drip.mp3");
 		menubg = LoadTexture("../res/background.png");
 		initTile();
 		initPlayer();
@@ -94,26 +95,26 @@ namespace SB {
 
 			DrawTexture(menubg,0,0,RAYWHITE);
 
-			DrawText(FormatText("SOKOBAN"), 20, 10, 120, WHITE);
+			DrawText(FormatText("SOKOBAN"), 20, 10, 120, SKYBLUE);
 
 			if (CheckCollisionPointRec(GetMousePosition(), playButton))
-				DrawText(FormatText("Play"), 20, GetScreenHeight() / 2, 30, RED);
+				DrawText(FormatText("Play"), 20, GetScreenHeight() / 2, 30, SKYBLUE);
 			else
 				DrawText(FormatText("Play"), 20, GetScreenHeight() / 2, 30, WHITE);
 
 
 			if (CheckCollisionPointRec(GetMousePosition(), creditsButton))
-				DrawText(FormatText("Credits"), 20, (GetScreenHeight() / 2) + 100, 30, RED);
+				DrawText(FormatText("Credits"), 20, (GetScreenHeight() / 2) + 100, 30, SKYBLUE);
 			else
 				DrawText(FormatText("Credits"), 20, (GetScreenHeight() / 2) + 100, 30, WHITE);
 
 			if (CheckCollisionPointRec(GetMousePosition(), closeButton))
-				DrawText(FormatText("Close"), 20, (GetScreenHeight() / 2) + 150, 30, RED);
+				DrawText(FormatText("Close"), 20, (GetScreenHeight() / 2) + 150, 30, BLUE);
 			else
 				DrawText(FormatText("Close"), 20, (GetScreenHeight() / 2) + 150, 30, WHITE);
 
 
-			DrawText(FormatText("v 0.8"), GetScreenWidth() - 50, 1, 20, WHITE);
+			DrawText(FormatText("v 1.0"), GetScreenWidth() - 50, 1, 20, WHITE);
 			if (CheckCollisionPointRec(GetMousePosition(), creditsButton)) {
 				DrawText(FormatText("Engine: Raylib 3.0"), (GetScreenWidth() / 2 + 40), (GetScreenHeight() / 3) + 20, 30, WHITE);
 				DrawText(FormatText("Created by:"), (GetScreenWidth() / 2 + 40), (GetScreenHeight() / 3) + 100, 30, WHITE);
@@ -150,9 +151,14 @@ namespace SB {
 			break;
 		}
 
+		PlayMusicStream(gameMusic);
+		SetMusicVolume(gameMusic, 0.5f);
+		SetMusicVolume(bgMusic,0.1f);
+
 		while (!WindowShouldClose() && screenId == screenID::game||screenId==screenID::pause) {
 
 			UpdateMusicStream(bgMusic);
+			UpdateMusicStream(gameMusic);
 			if (screenId == screenID::game) {
 				input();
 				update();
@@ -256,15 +262,15 @@ namespace SB {
 
 	void Mainframe::pauseScreen() {
 		Rectangle resumeButton;
-		resumeButton.x = 20;
-		resumeButton.y = (GetScreenHeight() / 2) + 150.0;
+		resumeButton.x = 20.0f;
+		resumeButton.y = (GetScreenHeight() / 2) + 150.0f;
 		resumeButton.height = 30.0f;
 		resumeButton.width = 113.75f;
 		Rectangle menuButton;
-		menuButton.x = 220;
-		menuButton.y = (GetScreenHeight() / 2) + 150.0;
-		menuButton.height = 30.0;
-		menuButton.width = 65.0;
+		menuButton.x = 220.0f;
+		menuButton.y = (GetScreenHeight() / 2) + 150.0f;
+		menuButton.height = 30.0f;
+		menuButton.width = 65.0f;
 
 
 		BeginDrawing();
@@ -272,14 +278,14 @@ namespace SB {
 		DrawTexture(menubg, 0, 0, WHITE);
 
 		if (CheckCollisionPointRec(GetMousePosition(), resumeButton))
-			DrawText(FormatText("Resume"), resumeButton.x, (GetScreenHeight() / 2) + 150.0f, 30, RED);
+			DrawText(FormatText("Resume"), resumeButton.x, (GetScreenHeight() / 2.0f) + 150.0f, 30.0f, SKYBLUE);
 		else
-			DrawText(FormatText("Resume"),resumeButton.x, (GetScreenHeight() / 2) + 150.0f, 30, WHITE);
+			DrawText(FormatText("Resume"),resumeButton.x, (GetScreenHeight() / 2.0f) + 150.0f, 30.0f, WHITE);
 
 
 
 		if (CheckCollisionPointRec(GetMousePosition(), menuButton))
-			DrawText(FormatText("Menu"), menuButton.x, (GetScreenHeight() / 2) + 150.0f, 30, RED);
+			DrawText(FormatText("Menu"), menuButton.x, (GetScreenHeight() / 2) + 150.0f, 30, SKYBLUE);
 		else
 			DrawText(FormatText("Menu"), menuButton.x, (GetScreenHeight() / 2) + 150.0f, 30, WHITE);
 
@@ -297,7 +303,7 @@ namespace SB {
 			_framecounter++;
 		}
 		if (_framecounter > 5) {
-			if (CheckCollisionPointRec(GetMousePosition(), resumeButton) && IsMouseButtonDown(MOUSE_LEFT_BUTTON) || IsKeyPressed(KEY_ESCAPE)) {
+			if (CheckCollisionPointRec(GetMousePosition(), resumeButton) && IsMouseButtonDown(MOUSE_LEFT_BUTTON) || IsKeyPressed(KEY_ESCAPE)||IsKeyPressed(KEY_P)) {
 				unpause();
 			}
 		}
@@ -307,10 +313,9 @@ namespace SB {
 #endif
 	}
 	void Mainframe::pause() {
-		if(IsKeyPressed(KEY_ESCAPE)) {
+		if (IsKeyPressed(KEY_ESCAPE) || IsKeyPressed(KEY_P) || CheckCollisionPointRec(GetMousePosition(),gamePauseButton)&&IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
 			screenId = screenID::pause;
 			_framecounter = 0;
-
 		}
 	}
 	void Mainframe::unpause() {
